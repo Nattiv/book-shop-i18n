@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css" />
+
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <title data-trans="h1">Book-Shop1</title>
+</head>
+
+<body onload="onInit()">
+    <nav class="nav">
+        <button class="btn-add-book" onclick="onToggleModal()" data-trans="addBook">הוסף ספר חדש</button>
+        <h1 data-trans="h1">חנות-ספרים</h1>
+        <div class="lang">
+            <p data-trans="langselect">בחר שפה</p>
+            <select onchange="onSetLang(this.value)">
+                <option value="he">עברית</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </nav>
+
+    <table>
+        <thead>
+            <tr>
+                <td data-trans="id">${gTrans.id[gCurrLang]}</td>
+                <td data-trans="title">${gTrans.title[gCurrLang]}</td>
+                <td data-trans="price">${gTrans.price[gCurrLang]}</td>
+                <td data-trans="img">${gTrans.img[gCurrLang]}</td>
+                <td data-trans="rate">${gTrans.rate[gCurrLang]}</td>
+                <td data-trans="actions">${gTrans.actions[gCurrLang]}</td>
+            </tr>
+        </thead>
+        <tbody class="books-table">
+        </tbody>
+    </table>
+
+    <div class="modal modal-add-book">
+        <p  data-trans="addBook">${gTrans.addBook[gCurrLang]}</p>
+        <input type="text" class="title-input">
+        <p data-trans="addBookPrice">${gTrans.addBookPrice[gCurrLang]}</p>
+        <input type="number" class="price-input">
+        <p data-trans="addImgUrl">${gTrans.addImgUrl[gCurrLang]}</p>
+        <input class="img-url-input">
+        <button onclick="onAddBook()" data-trans="addBookBtn">${gTrans.addBookBtn[gCurrLang]}</button>
+        <img src="img/x close.png" onclick="onToggleModal()" class="close-img-modal">
+    </div>
+
+    <div class="modal modal-update">
+        <p data-trans="updatePrice">${gTrans.updatePrice[gCurrLang]}</p>
+        <input type="number" class="price-update-input">
+        <button onclick="onUpdateBook()" data-trans="updateBtn">${gTrans.updateBtn[gCurrLang]}</button>
+        <input class="update-price-book-id hidden">
+        <img src="img/x close.png" onclick="onToggleModalUpdate()" class="close-img-modal">
+    </div>
+
+    <div class="modal modal-read">
+    </div>
+    <div class="modal modal-delete">
+            <p data-trans="isSure">${gTrans.isSure[gCurrLang]}</p>
+            <button onclick="onDeleteBook()" data-trans="confirmBtn">${gTrans.confirmBtn[gCurrLang]}</button>
+            <button onclick="onToggleModalDelete()" data-trans="cancelBtn">${gTrans.cancelBtn[gCurrLang]}</button>
+            <input class="delete-book-id hidden">
+        </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="js/book-shop-util.js"></script>
+    <script src="js/book-shop-service.js"></script>
+    <script src="js/book-shop-controller.js"></script>
+</body>
+
+</html>
